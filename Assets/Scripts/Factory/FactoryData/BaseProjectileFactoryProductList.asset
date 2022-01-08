@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc007835c75f094584d801b36a17674, type: 3}
+  m_Name: BaseProjectileFactoryProductList
+  m_EditorClassIdentifier: 
+  _gameObjects:
+  - {fileID: 8586704224539753592, guid: 84f39480bda4dde4eb90de10daaa5a76, type: 3}
