@@ -8,3 +8,5 @@
 /Packages/
 /.vscode
 /.idea
+.csproj
+.sln
