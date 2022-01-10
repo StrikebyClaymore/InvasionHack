@@ -482,6 +482,11 @@ PrefabInstance:
       propertyPath: movementCollideLayer.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2936642970165817674, guid: 0f37901dbb0ee144381121aa12374fa6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4962412570792165346, guid: 0f37901dbb0ee144381121aa12374fa6,
         type: 3}
       propertyPath: m_Mass
@@ -559,6 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4962412570792165346, guid: 0f37901dbb0ee144381121aa12374fa6, type: 3}
+    - {fileID: 2936642970165817674, guid: 0f37901dbb0ee144381121aa12374fa6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f37901dbb0ee144381121aa12374fa6, type: 3}
 --- !u!4 &869511174 stripped
 Transform:

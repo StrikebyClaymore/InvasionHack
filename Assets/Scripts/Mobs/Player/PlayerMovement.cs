@@ -40,6 +40,7 @@ namespace Assets.Scripts.Mobs.Player
         {
             Rotate();
             Move();
+            Gravity();
         }
 
         private void LateUpdate()
@@ -62,6 +63,14 @@ namespace Assets.Scripts.Mobs.Player
             _character.Move(_velocity * Time.fixedDeltaTime);
             //MoveCamera();
             _velocity = Vector3.zero;
+        }
+
+        private void Gravity()
+        {
+            if (_character.isGrounded)
+                return;
+            var gravity = Vector3.down * (9.8f * Time.fixedDeltaTime);
+            _character.Move(gravity);
         }
 
         private void Rotate()
