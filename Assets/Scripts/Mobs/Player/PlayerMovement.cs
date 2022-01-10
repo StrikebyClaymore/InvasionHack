@@ -52,14 +52,14 @@ namespace Assets.Scripts.Mobs.Player
             if (Direction.z == 0)
                 return;
             var direction = transform.forward * Direction.z;
-            _velocity = Vector3.ClampMagnitude( direction * (moveSpeed * Time.fixedDeltaTime), moveSpeed);
+            _velocity = Vector3.ClampMagnitude( direction * moveSpeed, moveSpeed);
         }
 
         private void Move()
         {
             if (_velocity == Vector3.zero)
                 return;
-            _character.Move(_velocity);
+            _character.Move(_velocity * Time.fixedDeltaTime);
             //MoveCamera();
             _velocity = Vector3.zero;
         }

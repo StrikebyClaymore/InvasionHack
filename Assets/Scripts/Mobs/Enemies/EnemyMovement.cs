@@ -9,13 +9,16 @@ namespace Assets.Scripts.Mobs.Enemies
     {
         protected NavMeshAgent Agent;
         protected EnemyAttack Attack;
-        public enum States { None, Idle, Wait, Move, Follow }
+        public enum States { None, Idle, Wait, MoveToPoint, Follow }
         private States _state;
         private bool _moveAllowed = true;
+        private Vector3 velocity;
+        private Vector3 direction;
         [SerializeField] private float moveSpeed;
         protected GameObject Target;
         protected Vector3 TargetPoint;
-        [SerializeField] private float stopDistance = 2.0f;
+        private float _stopDistance = 0.5f;
+        private float _pointStopDistance = 0.1f;
 
         private NavMeshPath path;
         private int pointIndex = 1;
@@ -23,33 +26,75 @@ namespace Assets.Scripts.Mobs.Enemies
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            Attack = GetComponent<EnemyAttack>();   
+            Attack = GetComponent<EnemyAttack>();
+        }
+
+        private void Start()
+        {
+            path = new NavMeshPath();
+            SetTarget(new Vector3(9f, 0f, transform.position.z));
             //SetTarget(new Vector3(Random.Range(-14f, 14f), 0f, Random.Range(-14f, 14f)));
-            SetTarget(new Vector3(12f, 0f, transform.position.z));
         }
 
         private void Update()
         {
-            if (_state == States.Move)
-                Move();
+            if (_state == States.MoveToPoint)
+                MoveToPoint();
             else if(_state == States.Follow)
                 Follow();
         }
 
-        protected virtual void Move()
+        private void FixedUpdate()
         {
-            if (Vector3.Distance(transform.position, TargetPoint) <= stopDistance)
-            {
-                //ChangeState(States.Idle);
-                SetTarget(new Vector3(TargetPoint.x * -1, 0f, TargetPoint.z));
-            }
+            ChangePosition();
         }
 
-        protected virtual void Follow()
+        protected void ChangePosition()
         {
-            Agent.destination = Target.transform.position;
+            if(velocity == Vector3.zero)
+                return;
+            velocity *= Time.fixedDeltaTime;
+            transform.LookAt(transform.position + direction);
+            transform.Translate(velocity, Space.World);
+            direction = Vector3.zero;
+            velocity = Vector3.zero;
         }
         
+        protected virtual void MoveToPoint()
+        {
+            var pos = transform.position;
+            var point = path.corners.Length - pointIndex <= 1 ? TargetPoint : path.corners[pointIndex];
+
+            direction = (point - pos).normalized;
+            direction.y = 0;
+            velocity = direction * moveSpeed;
+
+            CheckDistanceToTarget(point, Target && pointIndex == path.corners.Length - 1 ? _stopDistance : _pointStopDistance);
+        }
+
+        private void CheckDistanceToTarget(Vector3 point, float stopDistance)
+        {
+            if (Mathf.Abs(transform.position.x - point.x) < stopDistance)
+            {
+                pointIndex = Mathf.Min(pointIndex + 1, path.corners.Length);
+                
+                if (pointIndex == path.corners.Length)
+                {
+                    ChangeState(States.Idle);
+                }
+            }
+        }
+        
+        protected virtual void Follow()
+        {
+            if (!FindPath())
+            {
+                ChangeState(States.Idle);
+                return;
+            }
+            MoveToPoint();
+        }
+
         protected virtual void SetIdle()
         {
             Agent.enabled = false;
@@ -59,8 +104,8 @@ namespace Assets.Scripts.Mobs.Enemies
 
         protected virtual void SetTarget(Vector3 target)
         {
+            Target = null;
             TargetPoint = target;
-            Agent.stoppingDistance = 0f;
             SetMove();
         }
         
@@ -72,28 +117,37 @@ namespace Assets.Scripts.Mobs.Enemies
                 ChangeState(States.Idle);
                 return;
             }
-            Agent.stoppingDistance = stopDistance;
+            TargetPoint = Target.transform.position;
             SetMove();
         }
         
         protected virtual void SetMove()
         {
-            Agent.enabled = true;
-            Agent.destination = Target != null ? Target.transform.position : TargetPoint;
-            if (Agent.destination == default)
-            {
-                Agent.enabled = false;
+            if (!FindPath())
                 return;
-            }
-            Agent.enabled = true;
-            ChangeState(Target ? States.Follow : States.Move);
+            ChangeState(Target ? States.Follow : States.MoveToPoint);
         }
         
-                
+        protected bool FindPath()
+        {
+            if (Vector3.Distance(transform.position, TargetPoint) <= _stopDistance)
+                return false;
+            pointIndex = 1;
+            NavMesh.CalculatePath(transform.position, TargetPoint, NavMesh.AllAreas, path);
+
+            var _path = path.corners;
+            for (int i = 0; i < _path.Length - 1; i++)
+            {
+                Debug.DrawLine(_path[i], _path[i+1], Color.red, 10f);
+            }
+            
+            return path.corners.Length > 1;
+        }
+        
         public void AllowMove()
         {
             _moveAllowed = true;
-            ChangeState(States.Move);
+            ChangeState(States.MoveToPoint);
         }
 
         protected void ChangeState(States newState)
@@ -106,7 +160,7 @@ namespace Assets.Scripts.Mobs.Enemies
                 case States.Wait:
                     SetWait();
                     break;
-                case States.Move:
+                case States.MoveToPoint:
                     break;
                 case States.Follow:
                     break;

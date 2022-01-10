@@ -73,7 +73,6 @@
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileData.cs" />
-     <Compile Include="Assets\Scripts\TestMovement.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
