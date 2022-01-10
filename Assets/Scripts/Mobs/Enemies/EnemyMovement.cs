@@ -78,7 +78,8 @@ namespace Assets.Scripts.Mobs.Enemies
 
         private void CheckDistanceToTarget(Vector3 point, float stopDistance)
         {
-            if (Vector3.Distance(transform.position, point) < stopDistance)
+            //Debug.Log(Vector3.Distance(transform.position, point));
+            if (Vector3.Distance(transform.position, point) < stopDistance || Mathf.Abs(transform.position.x - point.x) < 0.1f) // wtf is this movement bug
             {
                 pointIndex = Mathf.Min(pointIndex + 1, path.corners.Length);
                 
