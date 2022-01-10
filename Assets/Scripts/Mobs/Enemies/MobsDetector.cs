@@ -4,15 +4,15 @@ using UnityEngine.PlayerLoop;
 
 namespace Assets.Scripts.Mobs.Enemies
 {
-    public class MobsDetecter : MonoBehaviour
+    public class MobsDetector : MonoBehaviour
     {
         private EnemyMovement _movement;
         private EnemyAttack _attack;
 
-        public void Initialize(EnemyMovement m, EnemyAttack a)
+        private void Awake()
         {
-            _movement = m;
-            _attack = a;
+            _movement = GetComponentInParent<EnemyMovement>();
+            _attack = GetComponentInParent<EnemyAttack>();
         }
 
         private void OnTriggerEnter(Collider other)

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Mobs.Enemies
 {
-    public class EnemyMovement : MonoBehaviour
+    public abstract class EnemyMovement : MonoBehaviour
     {
         protected NavMeshAgent Agent;
         protected EnemyAttack Attack;
@@ -22,6 +22,8 @@ namespace Assets.Scripts.Mobs.Enemies
 
         private NavMeshPath path;
         private int pointIndex = 1;
+        private float _findPathProgress;
+        
         
         private void Awake()
         {
@@ -42,6 +44,8 @@ namespace Assets.Scripts.Mobs.Enemies
                 MoveToPoint();
             else if(_state == States.Follow)
                 Follow();
+            if (_state != States.Wait)
+                UpdatePath();
         }
 
         private void FixedUpdate()
@@ -49,7 +53,7 @@ namespace Assets.Scripts.Mobs.Enemies
             ChangePosition();
         }
 
-        protected void ChangePosition()
+        private void ChangePosition()
         {
             if(velocity == Vector3.zero)
                 return;
@@ -74,7 +78,7 @@ namespace Assets.Scripts.Mobs.Enemies
 
         private void CheckDistanceToTarget(Vector3 point, float stopDistance)
         {
-            if (Mathf.Abs(transform.position.x - point.x) < stopDistance)
+            if (Vector3.Distance(transform.position, point) < stopDistance)
             {
                 pointIndex = Mathf.Min(pointIndex + 1, path.corners.Length);
                 
@@ -95,10 +99,7 @@ namespace Assets.Scripts.Mobs.Enemies
             MoveToPoint();
         }
 
-        protected virtual void SetIdle()
-        {
-            Agent.enabled = false;
-        }
+        protected virtual void SetIdle() { }
         
         protected virtual void SetWait() { }
 
@@ -135,22 +136,34 @@ namespace Assets.Scripts.Mobs.Enemies
             pointIndex = 1;
             NavMesh.CalculatePath(transform.position, TargetPoint, NavMesh.AllAreas, path);
 
-            var _path = path.corners;
-            for (int i = 0; i < _path.Length - 1; i++)
-            {
-                Debug.DrawLine(_path[i], _path[i+1], Color.red, 10f);
-            }
-            
             return path.corners.Length > 1;
         }
         
-        public void AllowMove()
+        private void UpdatePath()
         {
-            _moveAllowed = true;
-            ChangeState(States.MoveToPoint);
+            if (!Target)
+                return;
+            _findPathProgress += Time.deltaTime;
+            if (_findPathProgress >= 0.2f)
+            {
+                _findPathProgress = 0;
+                TargetPoint = Target.transform.position;
+                if (!FindPath())
+                    return;
+                ChangeState(States.Follow);
+            }
+        }
+        
+        public void AllowMove(bool allow)
+        {
+            _moveAllowed = allow;
+            if (allow)
+                ChangeState(States.MoveToPoint);
+            else
+                ChangeState(States.Idle);
         }
 
-        protected void ChangeState(States newState)
+        protected virtual void ChangeState(States newState)
         {
             switch (newState)
             {

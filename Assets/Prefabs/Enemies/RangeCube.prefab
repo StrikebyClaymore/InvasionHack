@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3551612577244902447}
   - component: {fileID: 6470020274002547542}
-  - component: {fileID: 5428227021938239954}
   - component: {fileID: 3289818844774949155}
   - component: {fileID: 5979460754519049311}
   m_Layer: 9
@@ -49,19 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
---- !u!114 &5428227021938239954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551612577244902444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f847e276576cf5449f39a79878cb8b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
 --- !u!65 &3289818844774949155
 BoxCollider:
   m_ObjectHideFlags: 0

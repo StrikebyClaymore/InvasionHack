@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Factory\GameObjectFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\ProjectileFactory.cs" />
      <Compile Include="Assets\Scripts\IHitble.cs" />
+     <Compile Include="Assets\Scripts\ITarget.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MobsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ProjectilesManager.cs" />
@@ -65,7 +66,7 @@
      <Compile Include="Assets\Scripts\Mobs\Enemies\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\MeleeCube\MeleeCubeAttack.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\MeleeCube\MeleeCubeMovement.cs" />
-     <Compile Include="Assets\Scripts\Mobs\Enemies\MobsDetecter.cs" />
+     <Compile Include="Assets\Scripts\Mobs\Enemies\MobsDetector.cs" />
      <Compile Include="Assets\Scripts\Mobs\Mob.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerAttack.cs" />
