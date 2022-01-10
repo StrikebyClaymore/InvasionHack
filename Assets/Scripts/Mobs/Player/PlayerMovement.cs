@@ -8,8 +8,8 @@ namespace Assets.Scripts.Mobs.Player
         private CharacterController _character;
         //private BoxCollider _collider;
         private Transform _camera;
-        [SerializeField]
-        private Vector3 cameraOffset;
+        //[SerializeField]
+        //private Vector3 cameraOffset;
         [SerializeField]
         private float moveSpeed; 
         private Vector3 _direction = Vector3.zero;
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Mobs.Player
 
         private void Start()
         {
-            cameraOffset = _camera.position;
+            //cameraOffset = _camera.position;
         }
 
         private void Update()
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Mobs.Player
             if (_velocity == Vector3.zero)
                 return;
             _character.Move(_velocity);
-            MoveCamera();
+            //MoveCamera();
             _velocity = Vector3.zero;
         }
 
@@ -72,16 +72,10 @@ namespace Assets.Scripts.Mobs.Player
             transform.Rotate(new Vector3(0f, Direction.x * rotationSpeed * Time.fixedDeltaTime, 0f));
         }
 
-        private void MoveCamera()
+        /*private void MoveCamera()
         {
-            /*var position = transform.position + cameraOffset;
-            position = new Vector3 (
-                Mathf.Round(position.x),
-                Mathf.Round(position.y),
-                Mathf.Round(position.z)
-                );
-            _camera.position = position;*/
-            _camera.position = transform.position + cameraOffset;
-        }
+            //_camera.transform.Translate(_velocity);
+            //_camera.position = transform.position + cameraOffset;
+        }*/
     }
 }

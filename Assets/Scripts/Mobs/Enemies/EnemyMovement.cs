@@ -17,11 +17,15 @@ namespace Assets.Scripts.Mobs.Enemies
         protected Vector3 TargetPoint;
         [SerializeField] private float stopDistance = 2.0f;
 
+        private NavMeshPath path;
+        private int pointIndex = 1;
+        
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            Attack = GetComponent<EnemyAttack>();
-            SetTarget(new Vector3(Random.Range(-14f, 14f), 0f, Random.Range(-14f, 14f)));
+            Attack = GetComponent<EnemyAttack>();   
+            //SetTarget(new Vector3(Random.Range(-14f, 14f), 0f, Random.Range(-14f, 14f)));
+            SetTarget(new Vector3(12f, 0f, transform.position.z));
         }
 
         private void Update()
@@ -34,17 +38,11 @@ namespace Assets.Scripts.Mobs.Enemies
 
         protected virtual void Move()
         {
-            /*var distanceToTarget = Target is null
-                ? Vector3.Distance(transform.position, TargetPoint)
-                : Vector3.Distance(transform.position, Target.transform.position);
-            if (Vector3.Distance(transform.position, Target.transform.position) <= stopDistance)
+            if (Vector3.Distance(transform.position, TargetPoint) <= stopDistance)
             {
-                ChangeState(States.Idle);
-            }*/
-            /*if (Vector3.Distance(transform.position, TargetPoint) <= stopDistance || Agent. )
-            {
-                ChangeState(States.Idle);
-            }*/
+                //ChangeState(States.Idle);
+                SetTarget(new Vector3(TargetPoint.x * -1, 0f, TargetPoint.z));
+            }
         }
 
         protected virtual void Follow()

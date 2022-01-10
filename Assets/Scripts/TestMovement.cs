@@ -13,6 +13,8 @@ public class TestMovement : MonoBehaviour
 
     private CharacterController _characterController;
 
+    [SerializeField] private LayerMask collideLayers;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -25,10 +27,9 @@ public class TestMovement : MonoBehaviour
         //transform.Rotate(new Vector3(0f, 1f * rotationSpeed * Time.fixedDeltaTime, 0f));
         //transform.Translate(_velocity);
         _characterController.Move(_velocity);
-
-
+        
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 2.0f, LayerMask.GetMask("Bounds")))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 2.0f, collideLayers))
         {
             transform.Rotate(Vector3.up, 180f);
         }

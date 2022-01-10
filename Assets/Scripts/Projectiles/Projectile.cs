@@ -13,7 +13,7 @@ namespace Assets.Scripts.Projectiles
 		private ProjectileFactory _originFactory;
 		private float moveSpeed;
 		private int damage;
-		private List<string> _ignoringCollisionTags = new List<string>(){"Area"};
+		private List<string> _ignoringCollisionTags = new List<string>{"Area"};
 
 		public ProjectileFactory OriginFactory
 		{

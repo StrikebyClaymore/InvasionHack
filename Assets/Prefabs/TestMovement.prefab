@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4458768226242124922}
   - component: {fileID: 4458768226242124920}
   - component: {fileID: 4458768226242124923}
+  - component: {fileID: 6823061667006672828}
   m_Layer: 9
   m_Name: TestMovement
   m_TagString: Enemy
@@ -47,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotationSpeed: 30
+  collideLayers:
+    serializedVersion: 2
+    m_Bits: 6144
 --- !u!65 &4458768226242124923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,6 +63,24 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &6823061667006672828
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458768226242124805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4458768227784345646
 GameObject:

@@ -50,6 +50,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Extensions\PrintExtension.cs" />
      <Compile Include="Assets\Scripts\Factory\EnemyFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\FactoryProductList.cs" />
@@ -74,34 +75,34 @@
      <Compile Include="Assets\Scripts\Projectiles\ProjectileData.cs" />
      <Compile Include="Assets\Scripts\TestMovement.cs" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VisualStudio.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PlasticSCM.Editor">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/Unity.PlasticSCM.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/CGO/Documents/Code/Unity/InvasionHack/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/CGO/Documents/GitHub/InvasionHack/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Editor/2019.4.34f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
