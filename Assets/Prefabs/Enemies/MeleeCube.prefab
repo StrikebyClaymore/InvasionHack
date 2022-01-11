@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  stopDistance: 1.2
 --- !u!114 &5286273147335034672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed009ff6cba28f24b8138bc72c0138b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldownTime: 1
+  attackCooldownTime: 1.5
   attackDistance: 1.5
+  attackDamage: 15
 --- !u!65 &3289818844774949155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -98,7 +100,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551612577244902444}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

@@ -770,7 +770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 869511174}
-  smoothSpeed: 0.248
 --- !u!1 &1115984574
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5979460754519049311, guid: c243f2832f465ca4c87c9df029e8768f,
+        type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8251393558076005371, guid: c243f2832f465ca4c87c9df029e8768f,
         type: 3}

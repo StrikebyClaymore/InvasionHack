@@ -7,7 +7,7 @@ namespace Assets.Scripts
     {
         public Transform target;
         private Vector3 _offset;
-        [Range(0.2f, 0.8f)] [SerializeField] private float smoothSpeed = 0.1f;
+        //[Range(0.2f, 0.8f)] [SerializeField] private float smoothSpeed = 0.1f;
         
         private void Start()
         {

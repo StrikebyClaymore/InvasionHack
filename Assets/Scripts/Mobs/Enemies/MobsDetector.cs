@@ -19,7 +19,8 @@ namespace Assets.Scripts.Mobs.Enemies
         {
             if (other.CompareTag("Player"))
             {
-                _movement.SetTarget(other.gameObject);
+                _movement.SetTarget(other.gameObject.GetComponent<Mob>());
+                _attack.SetTarget(other.gameObject.GetComponent<Mob>());
             }
         }
 
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Mobs.Enemies
             if (other.CompareTag("Player"))
             {
                 _movement.SetTarget(null);
+                _attack.SetTarget(null);
             }
         }
     }

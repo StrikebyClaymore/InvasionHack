@@ -7,14 +7,15 @@ namespace Assets.Scripts.Mobs.Enemies
     public abstract class EnemyAttack : MonoBehaviour
     {
         protected EnemyMovement Movement;
-        protected GameObject Target;
+        protected Mob Target;
         protected enum States { None, Attack, Cooldown }
         private States _state;
         private bool _attackAllowed = true;
         protected Timer CoolldownTimer;
         [SerializeField] private float attackCooldownTime = 1.0f;
         protected bool AttackIsCooldown = false;
-        [SerializeField] private float attackDistance = 1.5f;
+        [SerializeField] protected float attackDistance = 1.5f;
+        [SerializeField] protected int attackDamage = 1;
         
         
         private void Awake()
@@ -25,7 +26,7 @@ namespace Assets.Scripts.Mobs.Enemies
             CoolldownTimer.Elapsed += OnAttackCooldownTimeout;
         }
 
-        private void Update()
+        /*protected virtual void Update()
         {
             if (Target is null)
                 return;
@@ -33,7 +34,7 @@ namespace Assets.Scripts.Mobs.Enemies
             {
                 Attack();
             }
-        }
+        }*/
 
         protected abstract void Attack();
 
@@ -44,7 +45,7 @@ namespace Assets.Scripts.Mobs.Enemies
                 ChangeState(States.None);
         }
 
-        public virtual void SetTarget(GameObject target)
+        public virtual void SetTarget(Mob target)
         {
             Target = target;
         }
