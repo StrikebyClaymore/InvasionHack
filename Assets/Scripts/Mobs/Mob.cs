@@ -21,7 +21,7 @@ namespace Assets.Scripts.Mobs
                 Die();
         }
 
-        protected virtual void Die()
+        public virtual void Die()
         {
             Destroy(gameObject);
         }

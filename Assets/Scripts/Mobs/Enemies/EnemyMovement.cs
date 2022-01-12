@@ -8,12 +8,13 @@ namespace Assets.Scripts.Mobs.Enemies
     public abstract class EnemyMovement : MonoBehaviour
     {
         protected NavMeshAgent Agent;
+        //protected Enemy Enemy_;
         protected EnemyAttack Attack;
-        public enum States { None, Idle, Wait, MoveToPoint, Follow }
+        public enum States { None, Idle, Wait, MoveToDirection, MoveToPoint, Follow }
         private States _state;
         private bool _moveAllowed = true;
-        private Vector3 velocity;
-        private Vector3 direction;
+        protected Vector3 velocity;
+        protected Vector3 direction;
         [SerializeField]
         private float moveSpeed;
         protected Mob Target;
@@ -31,13 +32,14 @@ namespace Assets.Scripts.Mobs.Enemies
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
+            //Enemy_ = GetComponent<Enemy>();
             Attack = GetComponent<EnemyAttack>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             path = new NavMeshPath();
-            SetTarget(new Vector3(7.5f, 0f, transform.position.z));
+            //SetTarget(new Vector3(7.5f, 0f, transform.position.z));
             //SetTarget(new Vector3(Random.Range(-14f, 14f), 0f, Random.Range(-14f, 14f)));
         }
 
@@ -47,6 +49,8 @@ namespace Assets.Scripts.Mobs.Enemies
                 MoveToPoint();
             else if(_state == States.Follow)
                 Follow();
+            else if (_state == States.MoveToDirection)
+                MoveToDirection();
             if (_state != States.Wait)
                 UpdatePath();
         }
@@ -56,7 +60,7 @@ namespace Assets.Scripts.Mobs.Enemies
             ChangePosition();
         }
 
-        private void ChangePosition()
+        protected virtual void ChangePosition()
         {
             if(velocity == Vector3.zero)
                 return;
@@ -83,6 +87,12 @@ namespace Assets.Scripts.Mobs.Enemies
             CheckDistanceToTarget(point, Target && pointIndex == path.corners.Length - 1 ? stopDistance : _pointStopDistance);
         }
 
+        protected virtual void MoveToDirection()
+        {
+            direction = transform.forward;
+            velocity = direction * moveSpeed;
+        }
+        
         private void CheckDistanceToTarget(Vector3 point, float stopDistance)
         {
             //Debug.Log(Vector3.Distance(transform.position, point));
@@ -145,10 +155,10 @@ namespace Assets.Scripts.Mobs.Enemies
             //var point = new Vector3(TargetPoint.x, 0.5f, TargetPoint.z);
             NavMesh.CalculatePath(transform.position, TargetPoint, NavMesh.AllAreas, path);
 
-            for (int i = 0; i < path.corners.Length - 1; i++)
+            /*for (int i = 0; i < path.corners.Length - 1; i++)
             {
-                //Debug.DrawLine(path.corners[i], path.corners[i+1], Color.red, 10.0f);
-            }
+                Debug.DrawLine(path.corners[i], path.corners[i+1], Color.red, 10.0f);
+            }*/
             
             return path.corners.Length > 1;
         }
@@ -190,6 +200,10 @@ namespace Assets.Scripts.Mobs.Enemies
                 case States.MoveToPoint:
                     break;
                 case States.Follow:
+                    break;
+                case States.None:
+                    break;
+                case States.MoveToDirection:
                     break;
                 default:
                     break;

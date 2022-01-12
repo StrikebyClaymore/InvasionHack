@@ -69,6 +69,8 @@
      <Compile Include="Assets\Scripts\Mobs\Enemies\MobsDetector.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\RangeCube\RangeCubeAttack.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\RangeCube\RangeCubeMovement.cs" />
+     <Compile Include="Assets\Scripts\Mobs\Enemies\SimpleCube\SimpleCubeAttack.cs" />
+     <Compile Include="Assets\Scripts\Mobs\Enemies\SimpleCube\SimpleCubeMovement.cs" />
      <Compile Include="Assets\Scripts\Mobs\Mob.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerAttack.cs" />

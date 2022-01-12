@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Factory;
+﻿using System;
+using Assets.Scripts.Factory;
 using UnityEngine;
 
 namespace Assets.Scripts.Mobs.Enemies
@@ -11,11 +12,18 @@ namespace Assets.Scripts.Mobs.Enemies
 			get => _originFactory;
 			set => _originFactory = value;
 		}
-
-		
+			
 		public void Spawn(Vector3 point)
 		{
 			transform.position = point;
+		}
+
+		private void OnTriggerEnter(Collider other)
+		{
+			if (other.CompareTag("Bounds"))
+			{
+				Die();
+			}
 		}
 	}
 }
