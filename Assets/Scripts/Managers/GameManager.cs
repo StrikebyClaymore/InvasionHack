@@ -1,5 +1,7 @@
 ﻿using System;
+using Assets.Scripts.GUI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Managers
 {
@@ -7,11 +9,25 @@ namespace Assets.Scripts.Managers
     {
         public static MobsManager MobsManager;
         public static ProjectilesManager ProjectilesManager;
+        [SerializeField] private PauseMenu pauseMenu; 
 
         private void Awake()
         {
             MobsManager = transform.Find("Mobs").GetComponent<MobsManager>();
             ProjectilesManager = transform.Find("Projectiles").GetComponent<ProjectilesManager>();
+        }
+
+        public void SetPause(bool pause)
+        {
+            if (pause)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = 1f;
+        }
+
+        public void OnPausePressed()
+        {
+            pauseMenu.Open();
         }
     }
 }
