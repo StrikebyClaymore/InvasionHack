@@ -55,11 +55,9 @@ namespace Assets.Scripts.Mobs.Enemies.SimpleCube
             if (other.CompareTag("Enemy"))
             {
                 var enemy = other.gameObject.GetComponent<SimpleCubeAttack>();
-                if (enemy)
-                {
-                    enemy.Collapse(GetComponent<Enemy>());
-                    Destroy(gameObject);
-                }
+                if (enemy is null)
+                    return;
+                (Attack as SimpleCubeAttack)?.StartCollapse(enemy);
             }
         }
     }

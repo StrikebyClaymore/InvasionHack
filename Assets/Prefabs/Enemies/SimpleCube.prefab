@@ -80,6 +80,7 @@ MonoBehaviour:
   attackCooldownTime: 1
   attackDistance: 1.5
   attackDamage: 1
+  projectileData: {fileID: 11400000, guid: c8426b4720cb49e4bb5ca8cdc87acc5b, type: 2}
 --- !u!65 &3289818844774949155
 BoxCollider:
   m_ObjectHideFlags: 0
