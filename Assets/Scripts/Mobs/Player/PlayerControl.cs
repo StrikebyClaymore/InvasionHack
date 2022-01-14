@@ -29,7 +29,7 @@ namespace Assets.Scripts.Mobs.Player
             {
                 _playerMovement.Direction = Vector3.zero;
                 _playerAttack.IsFireOn = false;
-                Invoke(nameof(Lock), 2.5f);
+                Invoke(nameof(Lock), 1.5f);
             }
         }
         

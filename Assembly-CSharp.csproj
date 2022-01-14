@@ -60,6 +60,8 @@
      <Compile Include="Assets\Scripts\GUI\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\IHitble.cs" />
      <Compile Include="Assets\Scripts\ITarget.cs" />
+     <Compile Include="Assets\Scripts\LevelDesign\EnemiesWave.cs" />
+     <Compile Include="Assets\Scripts\LevelDesign\LevelEnemies.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MobsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ProjectilesManager.cs" />
