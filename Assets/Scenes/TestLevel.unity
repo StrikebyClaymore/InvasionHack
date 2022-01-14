@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 3551612577244902447, guid: b3e8e60f1a073da4baa85d2f3696e0b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.46
+      value: -10.26
       objectReference: {fileID: 0}
     - target: {fileID: 3551612577244902447, guid: b3e8e60f1a073da4baa85d2f3696e0b0,
         type: 3}
@@ -378,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 3551612577244902447, guid: b3e8e60f1a073da4baa85d2f3696e0b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.79
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 3551612577244902447, guid: b3e8e60f1a073da4baa85d2f3696e0b0,
         type: 3}
@@ -459,7 +459,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1994846212}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &299251037
 MonoBehaviour:
@@ -1113,12 +1113,12 @@ PrefabInstance:
     - target: {fileID: 7870774391808963132, guid: 0f37901dbb0ee144381121aa12374fa6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7870774391808963132, guid: 0f37901dbb0ee144381121aa12374fa6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7870774391808963132, guid: 0f37901dbb0ee144381121aa12374fa6,
         type: 3}
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115984574}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a217321a4b7fc6643b7ce1c961ab4a20, type: 3}
   m_Name: 
@@ -1974,7 +1974,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726577721}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 963194227}
@@ -2309,8 +2309,8 @@ Transform:
   - {fileID: 644224045}
   - {fileID: 338510642}
   - {fileID: 1958938055}
-  - {fileID: 869511174}
   - {fileID: 299251036}
+  - {fileID: 869511174}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

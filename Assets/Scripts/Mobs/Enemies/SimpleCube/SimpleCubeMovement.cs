@@ -29,10 +29,10 @@ namespace Assets.Scripts.Mobs.Enemies.SimpleCube
                 RaycastHit hit;
                 Physics.Raycast(pos, dir, out hit, dist, LayerMask.GetMask("Bounds"));
                 if(hit.collider != null){
-                    //Debug.DrawLine(pos, pos + (ang * new Vector3(hit.distance, 0f, 0f)), Color.red, 5f);
+                   // Debug.DrawLine(pos, pos + (ang * new Vector3(hit.distance, 0f, 0f)), Color.red, 5f);
                     continue;
                 }
-                //Debug.DrawLine(pos, pos + dir, Color.green, 5f);
+                //Debug.DrawLine(pos, pos + dir * dist, Color.green, 5f);
                 angles.Add(ang);
             }
             
