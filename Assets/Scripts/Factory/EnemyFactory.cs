@@ -38,19 +38,7 @@ namespace Assets.Scripts.Factory
 
         public Enemy Get(int type)
         {
-            Enemy instance = null;
-            switch (type)
-            {
-                case 0:
-                    instance = CreateGameObjectInstance(Get<Enemy>(0));
-                    break;
-                case 1:
-                    instance = CreateGameObjectInstance(Get<Enemy>(1));
-                    break;
-                default:
-                    throw new ArgumentNullException(nameof(instance));
-            }
-            
+            Enemy instance = CreateGameObjectInstance(Get<Enemy>(type));
             instance.OriginFactory = this;
             return instance;
         }

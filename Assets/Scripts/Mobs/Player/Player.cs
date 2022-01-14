@@ -10,9 +10,16 @@ namespace Assets.Scripts.Mobs.Player
 			if (currentHp == 0)
 			{
 				currentHp = maxHp;
-				transform.position = Vector3.zero + new Vector3(0f, 5f, 0f);
+				
+				Respawn();
 				//Die();
 			}
+		}
+
+		private void Respawn()
+		{
+			GetComponent<PlayerControl>().Lock();
+			transform.position = Vector3.zero + new Vector3(0f, 5f, 0f);
 		}
 	}
 }

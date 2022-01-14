@@ -46,14 +46,14 @@ namespace Assets.Scripts.Managers
             }
             else
             {
-                if (Random.Range(0, 2) == 0)
+                if (Random.Range(0, 3) == 0)
                     spawnPoint.z = -14;
                 else
                     spawnPoint.z = 14;
                 spawnPoint.x = Random.Range(-14, 16);
             }
 
-            int dice = Random.Range(0, 2);
+            int dice = Random.Range(0, 3);
             Enemy enemy = enemyFactory.Get(dice);//EnemyFactory.Enemies.Base
             enemy.Spawn(spawnPoint);
         }
