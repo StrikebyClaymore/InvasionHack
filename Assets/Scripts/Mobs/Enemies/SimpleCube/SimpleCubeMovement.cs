@@ -59,6 +59,11 @@ namespace Assets.Scripts.Mobs.Enemies.SimpleCube
                     return;
                 (Attack as SimpleCubeAttack)?.StartCollapse(enemy);
             }
+            
+            if (other.CompareTag("Bounds"))
+            {
+                GenerateDirection();
+            }
         }
     }
 }

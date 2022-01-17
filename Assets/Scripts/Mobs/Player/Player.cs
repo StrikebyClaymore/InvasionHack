@@ -18,7 +18,12 @@ namespace Assets.Scripts.Mobs.Player
 
 		private void Respawn()
 		{
-			GetComponent<PlayerControl>().Lock();
+			GetComponent<PlayerControl>().LockInput();
+			Invoke(nameof(RespawnSetPosition), 0.1f);
+		}
+
+		private void RespawnSetPosition()
+		{
 			transform.position = Vector3.zero + new Vector3(0f, 5f, 0f);
 		}
 	}

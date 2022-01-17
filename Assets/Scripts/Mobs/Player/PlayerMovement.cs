@@ -18,7 +18,7 @@ namespace Assets.Scripts.Mobs.Player
         [SerializeField]
         private float rotationSpeed = 360f;
         //[SerializeField] private LayerMask movementCollideLayer;
-        
+
         private void Awake()
         {
             _character = GetComponent<CharacterController>();
@@ -80,7 +80,8 @@ namespace Assets.Scripts.Mobs.Player
             
             transform.Rotate(new Vector3(0f, Direction.x * rotationSpeed * Time.fixedDeltaTime, 0f));
         }
-
+        
+        
         /*private void MoveCamera()
         {
             //_camera.transform.Translate(_velocity);

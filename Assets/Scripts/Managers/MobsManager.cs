@@ -16,6 +16,7 @@ namespace Assets.Scripts.Managers
         private float _spawnProgress;
 
         private int _currentWave = 0;
+        private int _currentWaveEnemiesCount;
         
         private void Awake()
         {
@@ -40,12 +41,28 @@ namespace Assets.Scripts.Managers
         private void SpawnWave()
         {
             var waveEnemies = levelEnemies.waves[_currentWave].enemies;
+            _currentWaveEnemiesCount = waveEnemies.Count;
             for (int i = 0; i < waveEnemies.Count; i++)
             {
                 SpawnEnemy(waveEnemies[i]);
             }
         }
 
+        public void UpdateEnemiesCounter()
+        {
+            _currentWaveEnemiesCount--;
+            if (_currentWave == levelEnemies.waves.Count - 1 && _currentWaveEnemiesCount == 0)
+            {
+                Debug.Log("Level Clear");
+                return;
+            }
+            if (_currentWaveEnemiesCount == 0)
+            {
+                _currentWave++;
+                SpawnWave();
+            }
+        }
+        
         private void SpawnEnemy(int type)
         {
             var spawnPoint = new Vector3();
@@ -53,9 +70,9 @@ namespace Assets.Scripts.Managers
             if (Random.Range(0, 2) == 0)
             {
                 if (Random.Range(0, 2) == 0)
-                    spawnPoint.x = -14.5f;
+                    spawnPoint.x = -14.0f;
                 else
-                    spawnPoint.x = 14.5f;
+                    spawnPoint.x = 14.0f;
                 spawnPoint.z = Random.Range(-14, 15);
             }
             else
@@ -64,40 +81,13 @@ namespace Assets.Scripts.Managers
                     spawnPoint.z = -14;
                 else
                     spawnPoint.z = 14;
-                spawnPoint.x = Random.Range(-14, 16);
+                spawnPoint.x = Random.Range(-14, 15);
             }
             
             Enemy enemy = enemyFactory.Get(type);
             enemy.Spawn(spawnPoint);
         }
-        
-        // ReSharper disable Unity.PerformanceAnalysis
-        private void SpawnEnemy()
-        {
-            var spawnPoint = new Vector3();//new Vector3(Random.Range(-5, 5), 0.0f, Random.Range(-5, 5));
 
-            if (Random.Range(0, 2) == 0)
-            {
-                if (Random.Range(0, 2) == 0)
-                    spawnPoint.x = -14.5f;
-                else
-                    spawnPoint.x = 14.5f;
-                spawnPoint.z = Random.Range(-14, 15);
-            }
-            else
-            {
-                if (Random.Range(0, 3) == 0)
-                    spawnPoint.z = -14;
-                else
-                    spawnPoint.z = 14;
-                spawnPoint.x = Random.Range(-14, 16);
-            }
-
-            int dice = Random.Range(0, 3);
-            Enemy enemy = enemyFactory.Get(dice);//EnemyFactory.Enemies.Base
-            enemy.Spawn(spawnPoint);
-        }
-        
         private void SpawnEnemy(EnemyFactory.Enemies type, Vector3 pos)
         {
             Enemy enemy = enemyFactory.Get(type); // EnemyFactory.Enemies.Base

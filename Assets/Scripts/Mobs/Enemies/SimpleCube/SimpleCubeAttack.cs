@@ -16,7 +16,7 @@ namespace Assets.Scripts.Mobs.Enemies.SimpleCube
         {
             if (gameObject.GetInstanceID() < body.gameObject.GetInstanceID())
             {
-                Destroy(gameObject);
+                GetComponent<Enemy>().Die();
                 return;
             }
 
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Mobs.Enemies.SimpleCube
         IEnumerator LateDestroy()
         {
             yield return new WaitForSeconds(_collapseMultiplier);
-            Destroy(gameObject);
+            GetComponent<Enemy>().Die();
         }
         
         private void CreateExplosion()

@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Factory;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts.Mobs.Enemies
@@ -18,9 +19,15 @@ namespace Assets.Scripts.Mobs.Enemies
 			transform.position = point;
 		}
 
+		public override void Die()
+		{
+			transform.parent.GetComponent<MobsManager>().UpdateEnemiesCounter();
+			base.Die();
+		}
+
 		private void OnTriggerEnter(Collider other)
 		{
-			if (other.CompareTag("Bounds"))
+			if (other.CompareTag("EnemyBounds"))
 			{
 				Die();
 			}

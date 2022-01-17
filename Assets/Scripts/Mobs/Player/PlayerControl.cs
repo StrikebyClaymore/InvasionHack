@@ -7,7 +7,7 @@ namespace Assets.Scripts.Mobs.Player
         private PlayerMovement _playerMovement;
         private PlayerAttack _playerAttack;
 
-        private bool _lock = false;
+        private bool _lockInput = false;
 
         private void Awake()
         {
@@ -17,22 +17,22 @@ namespace Assets.Scripts.Mobs.Player
 
         private void Update()
         {
-            if(_lock)
+            if(_lockInput)
                 return;
             InputProcess();
         }
 
-        public void Lock()
+        public void LockInput()
         {
-            _lock = !_lock;
-            if (_lock)
+            _lockInput = !_lockInput;
+            if (_lockInput)
             {
                 _playerMovement.Direction = Vector3.zero;
                 _playerAttack.IsFireOn = false;
-                Invoke(nameof(Lock), 1.5f);
+                Invoke(nameof(LockInput), 1.5f);
             }
         }
-        
+
         private void InputProcess()
         {
             MouseInput();
