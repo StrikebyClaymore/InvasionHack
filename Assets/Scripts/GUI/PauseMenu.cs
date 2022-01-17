@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.GUI
 {
-    public class PauseMenu: MonoBehaviour
+    public class PauseMenu: BaseMenu
     {
-        [SerializeField] private GameManager gameManager;
-
-        private void Awake()
+        protected override void Awake()
         {
             Close();
         }
@@ -23,18 +21,5 @@ namespace Assets.Scripts.GUI
         {
             SceneManager.LoadScene("MainMenu");
         }
-
-        public void Open()
-        {
-            gameObject.SetActive(true);
-            gameManager.SetPause(true);
-        }
-
-        public void Close()
-        {
-            gameObject.SetActive(false);
-            gameManager.SetPause(false);
-        }
-        
     }
 }

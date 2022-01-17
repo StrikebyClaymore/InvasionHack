@@ -11,14 +11,15 @@ namespace Assets.Scripts.Managers
         public static MobsManager MobsManager;
         public static ProjectilesManager ProjectilesManager;
         [SerializeField] private PauseMenu pauseMenu;
+        [SerializeField] private ClearLevelMenu clearLevelMenu;
 
-        public Player player;
+        public static Player Player;
 
         private void Awake()
         {
             MobsManager = transform.Find("Mobs").GetComponent<MobsManager>();
             ProjectilesManager = transform.Find("Projectiles").GetComponent<ProjectilesManager>();
-            player = transform.Find("Player").GetComponent<Player>();
+            Player = transform.Find("Player").GetComponent<Player>();
         }
 
         public void SetPause(bool pause)
@@ -32,6 +33,11 @@ namespace Assets.Scripts.Managers
         public void OnPausePressed()
         {
             pauseMenu.Open();
+        }
+
+        public void LevelComplete()
+        {
+            clearLevelMenu.Open();
         }
     }
 }

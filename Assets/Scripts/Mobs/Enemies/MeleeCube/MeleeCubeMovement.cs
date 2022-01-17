@@ -9,7 +9,7 @@ namespace Assets.Scripts.Mobs.Enemies.MeleeCube
         protected override void Start()
         {
             base.Start();
-            SetTarget(transform.root.GetComponent<GameManager>().player);
+            SetTarget(GameManager.Player);
         }
     }
 }

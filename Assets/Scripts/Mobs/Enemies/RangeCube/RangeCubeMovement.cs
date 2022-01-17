@@ -8,7 +8,7 @@ namespace Assets.Scripts.Mobs.Enemies.RangeCube
         protected override void Start()
         {
             base.Start();
-            SetTarget(transform.root.GetComponent<GameManager>().player);
+            SetTarget(GameManager.Player);
         }
     }
 }
