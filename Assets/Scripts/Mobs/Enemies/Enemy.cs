@@ -13,6 +13,7 @@ namespace Assets.Scripts.Mobs.Enemies
 			get => _originFactory;
 			set => _originFactory = value;
 		}
+		[SerializeField] private int cash;
 			
 		public void Spawn(Vector3 point)
 		{
@@ -21,7 +22,7 @@ namespace Assets.Scripts.Mobs.Enemies
 
 		public override void Die()
 		{
-			transform.parent.GetComponent<MobsManager>().UpdateEnemiesCounter();
+			transform.parent.GetComponent<MobsManager>().UpdateEnemiesCounter(cash);
 			base.Die();
 		}
 

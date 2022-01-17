@@ -7,11 +7,6 @@ namespace Assets.Scripts.GUI
 {
     public class PauseMenu: BaseMenu
     {
-        protected override void Awake()
-        {
-            Close();
-        }
-
         public void OnContinuePressed()
         {
             Close();

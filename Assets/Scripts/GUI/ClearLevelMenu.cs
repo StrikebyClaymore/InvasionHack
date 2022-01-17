@@ -18,9 +18,10 @@ namespace Assets.Scripts.GUI
             
         }
         
-        public override void Open()
+        public void Open(int c)
         {
             base.Open();
+            cash.text = $"Cash: {c.ToString()}$";
         }
     }
 }

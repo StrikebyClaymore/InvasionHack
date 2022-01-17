@@ -9,7 +9,7 @@ namespace Assets.Scripts.Managers
 {
     public class MobsManager : MonoBehaviour
     {
-        
+        private GameManager _gameManager;
         [SerializeField] private EnemyFactory enemyFactory = default;
         [SerializeField] private LevelEnemies levelEnemies;
         [SerializeField, Range(0.1f, 10f)] private float spawnSpeed = 1f;
@@ -20,12 +20,13 @@ namespace Assets.Scripts.Managers
         
         private void Awake()
         {
+            _gameManager = transform.root.GetComponent<GameManager>();
             enemyFactory.transform = transform;
         }
 
         private void Start()
         {
-            SpawnWave();
+            //SpawnWave();
         }
 
         private void Update()
@@ -48,12 +49,13 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void UpdateEnemiesCounter()
+        public void UpdateEnemiesCounter(int cash)
         {
             _currentWaveEnemiesCount--;
+            _gameManager.AddCash(cash);
             if (_currentWave == levelEnemies.waves.Count - 1 && _currentWaveEnemiesCount == 0)
             {
-                Debug.Log("Level Clear");
+                _gameManager.LevelComplete();
                 return;
             }
             if (_currentWaveEnemiesCount == 0)

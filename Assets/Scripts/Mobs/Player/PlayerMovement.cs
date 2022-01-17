@@ -67,7 +67,7 @@ namespace Assets.Scripts.Mobs.Player
 
         private void Gravity()
         {
-            if (_character.isGrounded)
+            if (_character.isGrounded) // Переделать на рейкаст или чек дистанс
                 return;
             var gravity = Vector3.down * (9.8f * Time.fixedDeltaTime);
             _character.Move(gravity);

@@ -60,8 +60,12 @@
      <Compile Include="Assets\Scripts\GUI\ClearLevelMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\PauseMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\RestartMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\RootMenu.cs" />
+     <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\IHitble.cs" />
      <Compile Include="Assets\Scripts\ITarget.cs" />
+     <Compile Include="Assets\Scripts\LevelData.cs" />
      <Compile Include="Assets\Scripts\LevelDesign\EnemiesWave.cs" />
      <Compile Include="Assets\Scripts\LevelDesign\LevelEnemies.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />

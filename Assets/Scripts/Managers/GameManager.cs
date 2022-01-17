@@ -8,12 +8,13 @@ namespace Assets.Scripts.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        public static MobsManager MobsManager;
-        public static ProjectilesManager ProjectilesManager;
-        [SerializeField] private PauseMenu pauseMenu;
-        [SerializeField] private ClearLevelMenu clearLevelMenu;
-
         public static Player Player;
+        public static MobsManager MobsManager;
+        public static RootMenu RootMenu;
+        public static ProjectilesManager ProjectilesManager;
+        [SerializeField] private GameData gameData;
+        private BaseMenu _currentMenu;
+        public bool isPaused = false;
 
         private void Awake()
         {
@@ -22,22 +23,15 @@ namespace Assets.Scripts.Managers
             Player = transform.Find("Player").GetComponent<Player>();
         }
 
-        public void SetPause(bool pause)
+        public void AddCash(int cash)
         {
-            if (pause)
-                Time.timeScale = 0;
-            else
-                Time.timeScale = 1f;
+            gameData.cashCollected += cash;
         }
-
-        public void OnPausePressed()
-        {
-            pauseMenu.Open();
-        }
-
+        
         public void LevelComplete()
         {
-            clearLevelMenu.Open();
+            //clearLevelMenu.Open();
         }
+        
     }
 }

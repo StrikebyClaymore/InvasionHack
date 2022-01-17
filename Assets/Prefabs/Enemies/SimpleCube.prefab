@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  cash: 10
 --- !u!114 &2613463258445386121
 MonoBehaviour:
   m_ObjectHideFlags: 0
