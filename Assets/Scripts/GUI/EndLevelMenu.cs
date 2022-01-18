@@ -27,7 +27,7 @@ namespace Assets.Scripts.GUI
         public override void Open()
         {
             base.Open();
-            var c = root.gameManager.levelData.Cash;
+            var c = root.gameManager.LevelData.Cash;
             cash.text = $"Cash: {c.ToString()}$";
         }
     }

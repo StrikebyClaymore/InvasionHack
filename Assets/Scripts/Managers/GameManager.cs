@@ -13,8 +13,8 @@ namespace Assets.Scripts.Managers
         public static MobsManager MobsManager;
         public static RootMenu RootMenu;
         public static ProjectilesManager ProjectilesManager;
-        public GameData gameData = new GameData();
-        public LevelData levelData = new LevelData();
+        public GameData GameData = new GameData();
+        public LevelData LevelData = new LevelData();
         public bool isPaused = false;
 
         private void Awake()
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Managers
 
         public void AddCash(int cash)
         {
-            levelData.Cash += cash;
+            LevelData.Cash += cash;
         }
         
         public void LevelComplete()
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Managers
             // 1 point for no get hits or hp > 80%
             // 1 point for time
             // 1 point for level complete
-            gameData.CashCollected += levelData.Cash;
+            GameData.CashCollected += LevelData.Cash;
             RootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
         }
 

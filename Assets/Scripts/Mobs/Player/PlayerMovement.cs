@@ -18,6 +18,7 @@ namespace Assets.Scripts.Mobs.Player
         [SerializeField]
         private float rotationSpeed = 360f;
         //[SerializeField] private LayerMask movementCollideLayer;
+        private readonly float _moveHeight = 0.083f; 
 
         private void Awake()
         {
@@ -67,8 +68,12 @@ namespace Assets.Scripts.Mobs.Player
 
         private void Gravity()
         {
-            if (_character.isGrounded) // Переделать на рейкаст или чек дистанс
+            if (transform.position.y <= _moveHeight)
+            {
+                if(transform.position.y < _moveHeight)
+                    transform.position = new Vector3(transform.position.x, _moveHeight, transform.position.z);
                 return;
+            }
             var gravity = Vector3.down * (9.8f * Time.fixedDeltaTime);
             _character.Move(gravity);
         }
