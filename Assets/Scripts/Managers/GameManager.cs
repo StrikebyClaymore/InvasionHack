@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using Assets.Scripts.GUI;
 using Assets.Scripts.Mobs.Player;
 using UnityEngine;
@@ -13,7 +14,6 @@ namespace Assets.Scripts.Managers
         public static RootMenu RootMenu;
         public static ProjectilesManager ProjectilesManager;
         [SerializeField] private GameData gameData;
-        private BaseMenu _currentMenu;
         public bool isPaused = false;
 
         private void Awake()
@@ -30,7 +30,21 @@ namespace Assets.Scripts.Managers
         
         public void LevelComplete()
         {
-            //clearLevelMenu.Open();
+            RootMenu.OpenMenu(RootMenu.MenuType.ClearLevel);
+        }
+
+        public void SetPause()
+        {
+            if (isPaused)
+            {
+                Time.timeScale = 1f;
+                isPaused = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+            }
         }
         
     }

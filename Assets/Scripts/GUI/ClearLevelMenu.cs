@@ -10,7 +10,7 @@ namespace Assets.Scripts.GUI
         
         public void OnNextPressed()
         {
-            
+            Close();
         }
 
         public void OnUpgradePressed()

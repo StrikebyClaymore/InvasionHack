@@ -8,13 +8,17 @@ namespace Assets.Scripts.GUI
     {
         [HideInInspector] public RootMenu root;
 
-        public virtual void Open()
+        public void Open()
         {
+            if (!root.gameManager.isPaused)
+                root.gameManager.SetPause();
             gameObject.SetActive(true);
         }
 
         public void Close()
         {
+            if (!root.AnyMenuIsActive(this))
+                root.gameManager.SetPause();
             gameObject.SetActive(false);
         }
     }
