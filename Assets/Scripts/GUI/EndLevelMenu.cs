@@ -16,7 +16,7 @@ namespace Assets.Scripts.GUI
 
         public void OnUpgradePressed()
         {
-            
+            root.OpenMenu(RootMenu.MenuType.Upgrade);
         }
 
         public void OnRestartPressed()

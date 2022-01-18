@@ -12,7 +12,7 @@ namespace Assets.Scripts.Managers
         private GameManager _gameManager;
         [SerializeField] private EnemyFactory enemyFactory = default;
         [SerializeField] private LevelEnemies levelEnemies;
-        [SerializeField, Range(0.1f, 10f)] private float spawnSpeed = 1f;
+        //[SerializeField, Range(0.1f, 10f)] private float spawnSpeed = 1f;
         private float _spawnProgress;
 
         private int _currentWave = 0;

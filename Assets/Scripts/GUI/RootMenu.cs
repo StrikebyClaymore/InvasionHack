@@ -12,10 +12,12 @@ namespace Assets.Scripts.GUI
         [Header("Menus")]
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private EndLevelMenu endLevelMenu;
+        [SerializeField] private UpgradeMenu upgradeMenu;
         public enum MenuType
         {
             Pause,
-            EndLevel
+            EndLevel,
+            Upgrade
         }
 
         private void Start()
@@ -39,6 +41,9 @@ namespace Assets.Scripts.GUI
                     break;
                 case MenuType.EndLevel:
                     endLevelMenu.Open();
+                    break;
+                case MenuType.Upgrade:
+                    upgradeMenu.Open();
                     break;
                 default:
                     break;
