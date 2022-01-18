@@ -10,7 +10,7 @@ namespace Assets.Scripts.GUI
         
         public void OnStartPressed()
         {
-            SceneManager.LoadScene("TestLevel");
+            SceneManager.LoadScene("Level");
         }
         
     }

@@ -2,7 +2,7 @@
 {
     public class LevelData
     {
-        public int grade;
-        public int cash;
+        public int Grade;
+        public int Cash;
     }
 }

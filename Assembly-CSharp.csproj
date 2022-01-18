@@ -57,10 +57,9 @@
      <Compile Include="Assets\Scripts\Factory\GameObjectFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\ProjectileFactory.cs" />
      <Compile Include="Assets\Scripts\GUI\BaseMenu.cs" />
-     <Compile Include="Assets\Scripts\GUI\ClearLevelMenu.cs" />
+     <Compile Include="Assets\Scripts\GUI\EndLevelMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\PauseMenu.cs" />
-     <Compile Include="Assets\Scripts\GUI\RestartMenu.cs" />
      <Compile Include="Assets\Scripts\GUI\RootMenu.cs" />
      <Compile Include="Assets\Scripts\GameData.cs" />
      <Compile Include="Assets\Scripts\IHitble.cs" />

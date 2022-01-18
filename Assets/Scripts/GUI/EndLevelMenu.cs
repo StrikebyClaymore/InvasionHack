@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.GUI
 {
-    public class ClearLevelMenu : BaseMenu
+    public class EndLevelMenu : BaseMenu
     {
         [SerializeField] private Text grade;
         [SerializeField] private Text cash;
@@ -17,10 +18,16 @@ namespace Assets.Scripts.GUI
         {
             
         }
+
+        public void OnRestartPressed()
+        {
+            SceneManager.LoadScene("Level");
+        }
         
-        public void Open(int c)
+        public override void Open()
         {
             base.Open();
+            var c = root.gameManager.levelData.Cash;
             cash.text = $"Cash: {c.ToString()}$";
         }
     }

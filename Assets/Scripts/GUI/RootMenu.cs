@@ -11,25 +11,22 @@ namespace Assets.Scripts.GUI
         public GameManager gameManager;
         [Header("Menus")]
         [SerializeField] private PauseMenu pauseMenu;
-        [SerializeField] private RestartMenu restartMenu;
-        [SerializeField] private ClearLevelMenu clearLevelMenu;
+        [SerializeField] private EndLevelMenu endLevelMenu;
         public enum MenuType
         {
             Pause,
-            Restart,
-            ClearLevel
+            EndLevel
         }
 
         private void Start()
         {
             pauseMenu.root = this;
-            clearLevelMenu.root = this;
-            restartMenu.root = this;
+            endLevelMenu.root = this;
         }
 
         public bool AnyMenuIsActive(BaseMenu menu)
         {
-            var list = new List<BaseMenu>{ pauseMenu, restartMenu, clearLevelMenu };
+            var list = new List<BaseMenu>{ pauseMenu, endLevelMenu };
             return list.Any(m => m.isActiveAndEnabled && m != menu);
         }
         
@@ -40,11 +37,8 @@ namespace Assets.Scripts.GUI
                 case MenuType.Pause:
                     pauseMenu.Open();
                     break;
-                case MenuType.Restart:
-                    restartMenu.Open();
-                    break;
-                case MenuType.ClearLevel:
-                    clearLevelMenu.Open();
+                case MenuType.EndLevel:
+                    endLevelMenu.Open();
                     break;
                 default:
                     break;

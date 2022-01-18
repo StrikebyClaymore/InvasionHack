@@ -2,8 +2,8 @@
 
 namespace Assets.Scripts
 {
-    public class GameData : MonoBehaviour
+    public class GameData
     {
-        public int cashCollected;
+        public int CashCollected;
     }
 }

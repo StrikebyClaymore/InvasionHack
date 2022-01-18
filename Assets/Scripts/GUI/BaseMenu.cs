@@ -8,7 +8,7 @@ namespace Assets.Scripts.GUI
     {
         [HideInInspector] public RootMenu root;
 
-        public void Open()
+        public virtual void Open()
         {
             if (!root.gameManager.isPaused)
                 root.gameManager.SetPause();
