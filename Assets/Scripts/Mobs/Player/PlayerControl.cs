@@ -22,6 +22,18 @@ namespace Assets.Scripts.Mobs.Player
             InputProcess();
         }
 
+        public void RespawnLockInput()
+        {
+            _lockInput = !_lockInput;
+            if (!_lockInput)
+                return;
+            {
+                _playerMovement.Direction = Vector3.zero;
+                _playerAttack.IsFireOn = false;
+                Invoke(nameof(RespawnLockInput), 1.5f);
+            }
+        }
+
         public void LockInput()
         {
             _lockInput = !_lockInput;
@@ -29,10 +41,9 @@ namespace Assets.Scripts.Mobs.Player
             {
                 _playerMovement.Direction = Vector3.zero;
                 _playerAttack.IsFireOn = false;
-                Invoke(nameof(LockInput), 1.5f);
             }
         }
-
+        
         private void InputProcess()
         {
             MouseInput();

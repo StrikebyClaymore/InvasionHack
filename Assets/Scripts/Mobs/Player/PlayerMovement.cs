@@ -92,5 +92,10 @@ namespace Assets.Scripts.Mobs.Player
             //_camera.transform.Translate(_velocity);
             //_camera.position = transform.position + cameraOffset;
         }*/
+        
+        public void ApplyUpgrades(GameData gameData)
+        {
+            
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace Assets.Scripts.GUI
         {
             pauseMenu.root = this;
             endLevelMenu.root = this;
+            upgradeMenu.root = this;
         }
 
         public bool AnyMenuIsActive(BaseMenu menu)

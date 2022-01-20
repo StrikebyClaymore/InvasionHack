@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba672fbd886b7164b9ccca236c60e9ae, type: 3}
-  m_Name: EnemiesWave_0
+  m_Script: {fileID: 11500000, guid: 289d44e65cb50a849b8222aa558e3d9b, type: 3}
+  m_Name: MoveSpeed
   m_EditorClassIdentifier: 
-  enemies: 00000000
+  cost: 64000000c800000090010000bc020000e8030000
+  scale:
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1

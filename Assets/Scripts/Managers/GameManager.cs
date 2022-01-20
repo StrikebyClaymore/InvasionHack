@@ -10,8 +10,8 @@ namespace Assets.Scripts.Managers
     public class GameManager : MonoBehaviour
     {
         public static Player Player;
-        public static MobsManager MobsManager;
-        public static RootMenu RootMenu;
+        public MobsManager mobsManager;
+        public RootMenu rootMenu;
         public static ProjectilesManager ProjectilesManager;
         public GameData GameData = new GameData();
         public LevelData LevelData = new LevelData();
@@ -19,14 +19,14 @@ namespace Assets.Scripts.Managers
 
         private void Awake()
         {
-            MobsManager = transform.Find("Mobs").GetComponent<MobsManager>();
+            mobsManager = transform.Find("Mobs").GetComponent<MobsManager>();
             ProjectilesManager = transform.Find("Projectiles").GetComponent<ProjectilesManager>();
             Player = transform.Find("Player").GetComponent<Player>();
         }
 
         public void AddCash(int cash)
         {
-            LevelData.Cash += cash;
+            LevelData.Cash += cash * 10;
         }
         
         public void LevelComplete()
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Managers
             // 1 point for time
             // 1 point for level complete
             GameData.CashCollected += LevelData.Cash;
-            RootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
+            rootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
         }
 
         public void SetPause()
@@ -45,11 +45,13 @@ namespace Assets.Scripts.Managers
             {
                 Time.timeScale = 1f;
                 isPaused = false;
+                Player.GetComponent<PlayerControl>().LockInput();
             }
             else
             {
                 Time.timeScale = 0;
                 isPaused = true;
+                Player.GetComponent<PlayerControl>().LockInput();
             }
         }
         

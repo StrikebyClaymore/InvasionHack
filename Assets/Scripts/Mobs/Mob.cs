@@ -8,7 +8,7 @@ namespace Assets.Scripts.Mobs
         [SerializeField] protected int maxHp = 100;
         [SerializeField] protected int currentHp;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (currentHp == 0)
                 currentHp = maxHp;

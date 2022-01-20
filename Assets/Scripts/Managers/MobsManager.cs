@@ -26,7 +26,7 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
-            //SpawnWave();
+            SpawnWave();
         }
 
         private void Update()

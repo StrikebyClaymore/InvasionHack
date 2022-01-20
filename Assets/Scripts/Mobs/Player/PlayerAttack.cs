@@ -53,5 +53,10 @@ namespace Assets.Scripts.Mobs.Player
             _attackCooldownTimer = new Timer(attackCooldownTime * 1000f);
             _attackCooldownTimer.Elapsed += OnAttackCooldownTimeOut;
         }
+
+        public void ApplyUpgrades(GameData gameData)
+        {
+            
+        }
     }
 }

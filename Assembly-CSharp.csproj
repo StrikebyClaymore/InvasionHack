@@ -86,6 +86,8 @@
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\Mobs\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Mobs\Player\Upgrades\UpgradeConfig.cs" />
+     <Compile Include="Assets\Scripts\Mobs\Player\Upgrades\UpgradeList.cs" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileData.cs" />
  <Reference Include="Unity.Timeline.Editor">

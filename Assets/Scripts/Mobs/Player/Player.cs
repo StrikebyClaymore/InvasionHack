@@ -1,9 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Mobs.Player
 {
 	public class Player : Mob
 	{
+		private PlayerMovement _playerMovement;
+		private PlayerAttack _playerAttack;
+
+		protected override void Awake()
+		{
+			base.Awake();
+			_playerMovement = GetComponent<PlayerMovement>();
+			_playerAttack = GetComponent<PlayerAttack>();
+		}
+
+		public void ApplyUpgrades(GameData gameData)
+		{
+			_playerMovement.ApplyUpgrades(gameData);
+			_playerMovement.ApplyUpgrades(gameData);
+		}
+		
 		public override void GetHit(int damage)
 		{
 			currentHp = Mathf.Max(currentHp - damage, 0);
@@ -18,7 +35,7 @@ namespace Assets.Scripts.Mobs.Player
 
 		private void Respawn()
 		{
-			GetComponent<PlayerControl>().LockInput();
+			GetComponent<PlayerControl>().RespawnLockInput();
 			Invoke(nameof(RespawnSetPosition), 0.1f);
 		}
 
