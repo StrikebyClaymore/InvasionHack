@@ -53,7 +53,7 @@ namespace Assets.Scripts.Managers
                currentLevel++;
                SpawnWave();
             }
-            catch (Exception e)
+            catch
             {
                 // ignored
             }

@@ -55,7 +55,7 @@ namespace Assets.Scripts.Mobs.Player
         {
             if (Direction.z == 0)
                 return;
-            var direction = transform.forward * Direction.z;
+            var direction = Direction;//transform.forward * Direction.z;
             _velocity = Vector3.ClampMagnitude( direction * moveSpeed, moveSpeed);
         }
 
@@ -82,10 +82,10 @@ namespace Assets.Scripts.Mobs.Player
 
         private void Rotate()
         {
-            if (Direction.x == 0)
-                return;
-            
-            transform.Rotate(new Vector3(0f, Direction.x * rotationSpeed * Time.fixedDeltaTime, 0f));
+            //if (Direction.x == 0)
+            //    return;
+            transform.LookAt(transform.position + _direction);
+            //transform.Rotate(new Vector3(0f, Direction.x * rotationSpeed * Time.fixedDeltaTime, 0f));
         }
         
         
