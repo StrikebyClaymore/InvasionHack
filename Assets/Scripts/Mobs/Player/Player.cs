@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Scripts.Mobs.Player.Upgrades;
 using UnityEngine;
 
 namespace Assets.Scripts.Mobs.Player
@@ -15,10 +16,12 @@ namespace Assets.Scripts.Mobs.Player
 			_playerAttack = GetComponent<PlayerAttack>();
 		}
 
-		public void ApplyUpgrades(GameData gameData)
+		public void ApplyUpgrades(UpgradeList upgradeList)
 		{
-			_playerMovement.ApplyUpgrades(gameData);
-			_playerMovement.ApplyUpgrades(gameData);
+			maxHp = (int) upgradeList.health.scale[GameData.Health];
+			
+			_playerMovement.ApplyUpgrades(upgradeList);
+			_playerAttack.ApplyUpgrades(upgradeList);
 		}
 		
 		public override void GetHit(int damage)
@@ -43,5 +46,8 @@ namespace Assets.Scripts.Mobs.Player
 		{
 			transform.position = Vector3.zero + new Vector3(0f, 5f, 0f);
 		}
+
+		public int GetGrade() => currentHp >= maxHp / 100 * 80 ? 1 : 0;
+
 	}
 }

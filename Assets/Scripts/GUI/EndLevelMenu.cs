@@ -12,6 +12,7 @@ namespace Assets.Scripts.GUI
         public void OnNextPressed()
         {
             Close();
+            root.gameManager.mobsManager.SetNextLevel();
         }
 
         public void OnUpgradePressed()
@@ -21,6 +22,7 @@ namespace Assets.Scripts.GUI
 
         public void OnRestartPressed()
         {
+            Close();
             SceneManager.LoadScene("Level");
         }
         
@@ -28,6 +30,8 @@ namespace Assets.Scripts.GUI
         {
             base.Open();
             var c = root.gameManager.LevelData.Cash;
+            var d = root.gameManager.LevelData.Grade;
+            grade.text = $"Grade: {d.ToString()}/3";
             cash.text = $"Cash: {c.ToString()}$";
         }
     }

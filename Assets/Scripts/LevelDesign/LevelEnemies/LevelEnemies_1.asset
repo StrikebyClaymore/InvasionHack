@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc899ac79498514c9779154be50a3ec, type: 3}
   m_Name: LevelEnemies_1
   m_EditorClassIdentifier: 
+  gradeLevelTime: 180
   waves:
   - {fileID: 11400000, guid: d89e802537fc09b44a980ce3a4888e99, type: 2}
   - {fileID: 11400000, guid: bba678ba7b1710f469895efb7dc28410, type: 2}

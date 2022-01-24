@@ -16,9 +16,10 @@ namespace Assets.Scripts.GUI
 
         private void Start()
         {
-            for (int i = 0; i < upgradeList.List.Length; i++)
+            var list = new[] {upgradeList.attackPower, upgradeList.attackSpeed, upgradeList.moveSpeed, upgradeList.health, upgradeList.doubleShot};
+            for (int i = 0; i < list.Length; i++)
             {
-                var upgrade = upgradeList.List[i];
+                var upgrade = list[i];
                 UpdateCost(i, upgrade.cost[0]);
             }
         }
@@ -48,38 +49,37 @@ namespace Assets.Scripts.GUI
         
         public void OnUpgradePressed(int row)
         {
-            var gd = root.gameManager.GameData;
-            var data = new[] {gd.AttackPower, gd.AttackSpeed, gd.MoveSpeed, gd.Health, gd.DoubleShot};
-            var maxGrade = upgradeList.List[row].cost.Length;
+            var data = new[] {GameData.AttackPower, GameData.AttackSpeed, GameData.MoveSpeed, GameData.Health, GameData.DoubleShot};
+            var list = new[] {upgradeList.attackPower, upgradeList.attackSpeed, upgradeList.moveSpeed, upgradeList.health, upgradeList.doubleShot};
+            var maxGrade = list[row].cost.Length;
             var nextGrade = data[row] + 1;
 
             if (nextGrade > maxGrade)
                 return;
 
-            var cost = upgradeList.List[row].cost[nextGrade - 1];
-            if(gd.CashCollected < cost)
+            var cost = list[row].cost[nextGrade - 1];
+            if(GameData.CashCollected < cost)
                 return;
-            gd.CashCollected -= cost;
-            cashText.text = "Cash: " + gd.CashCollected + "$";
+            GameData.CashCollected -= cost;
+            cashText.text = "Cash: " + GameData.CashCollected + "$";
             
             if (nextGrade == maxGrade)
                 UpdateButton(row, nextGrade, 0, true);
             else
-                UpdateButton(row, nextGrade, upgradeList.List[row].cost[nextGrade]);   
+                UpdateButton(row, nextGrade, list[row].cost[nextGrade]);   
             
             data[row] = nextGrade;
             SetData(data);
-            GameManager.Player.ApplyUpgrades(gd);
+            GameManager.Player.ApplyUpgrades(upgradeList);
         }
 
         private void SetData(int[] data)
         {
-            var gd = root.gameManager.GameData;
-            gd.AttackPower = data[0];
-            gd.AttackSpeed = data[1];
-            gd.MoveSpeed = data[2];
-            gd.Health = data[3];
-            gd.DoubleShot = data[4];
+            GameData.AttackPower = data[0];
+            GameData.AttackSpeed = data[1];
+            GameData.MoveSpeed = data[2];
+            GameData.Health = data[3];
+            GameData.DoubleShot = data[4];
         }
         
         public void OnBackPressed()
@@ -91,7 +91,7 @@ namespace Assets.Scripts.GUI
         public override void Open()
         {
             base.Open();
-            cashText.text = "Cash: " + root.gameManager.GameData.CashCollected + "$";
+            cashText.text = "Cash: " + GameData.CashCollected + "$";
         }
     }
 }

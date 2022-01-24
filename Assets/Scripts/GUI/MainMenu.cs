@@ -6,11 +6,25 @@ namespace Assets.Scripts.GUI
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private GameManager gameManager; 
-        
+        [SerializeField] private GameObject main;
+        [SerializeField] private GameObject levels;
+
         public void OnStartPressed()
         {
+            main.SetActive(false);
+            levels.SetActive(true);
+        }
+        
+        public void OnLevelPressed(int level)
+        {
+            GameData.CurrentLevel = level;
             SceneManager.LoadScene("Level");
+        }
+        
+        public void OnBackPressed()
+        {
+            main.SetActive(true);
+            levels.SetActive(false);
         }
         
     }

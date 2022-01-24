@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using Assets.Scripts.Mobs.Player.Upgrades;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Scripts.Mobs.Player
@@ -10,8 +12,8 @@ namespace Assets.Scripts.Mobs.Player
         private Transform _camera;
         //[SerializeField]
         //private Vector3 cameraOffset;
-        [SerializeField]
-        private float moveSpeed; 
+        [SerializeField] private float defaultMoveSpeed = 5.0f;
+        private float moveSpeed = 5.0f;
         private Vector3 _direction = Vector3.zero;
         public Vector3 Direction { get => _direction;  set => _direction = value; }
         private Vector3 _velocity;
@@ -93,9 +95,9 @@ namespace Assets.Scripts.Mobs.Player
             //_camera.position = transform.position + cameraOffset;
         }*/
         
-        public void ApplyUpgrades(GameData gameData)
+        public void ApplyUpgrades(UpgradeList upgradeList)
         {
-            
+            moveSpeed = defaultMoveSpeed + upgradeList.moveSpeed.scale[GameData.MoveSpeed];
         }
     }
 }

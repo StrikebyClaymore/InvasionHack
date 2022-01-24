@@ -1,6 +1,7 @@
 ﻿using System.Timers;
 using Assets.Scripts.Factory;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Mobs.Player.Upgrades;
 using Assets.Scripts.Projectiles;
 using UnityEngine;
 
@@ -22,7 +23,10 @@ namespace Assets.Scripts.Mobs.Player
         [SerializeField]
         private float attackCooldownTime = 1f;
         private bool _isAttackCooldown;
+        private int _attackPower;
 
+        private bool _doubleShot;
+        
         private void Awake()
         {
             SetAttackCooldownTimer();
@@ -38,6 +42,7 @@ namespace Assets.Scripts.Mobs.Player
         {
             if(!_isFireOn || _isAttackCooldown)
                 return;
+            projectileData.damage += _attackPower;
             GameManager.ProjectilesManager.SpawnProjectile(aim.position, transform.rotation, projectileData);
             _isAttackCooldown = true;
             _attackCooldownTimer.Start();
@@ -54,9 +59,11 @@ namespace Assets.Scripts.Mobs.Player
             _attackCooldownTimer.Elapsed += OnAttackCooldownTimeOut;
         }
 
-        public void ApplyUpgrades(GameData gameData)
+        public void ApplyUpgrades(UpgradeList upgradeList)
         {
-            
+            _attackPower = (int) upgradeList.attackPower.scale[GameData.AttackPower];
+            _attackCooldownTimer.Interval = attackCooldownTime - upgradeList.attackSpeed.scale[GameData.AttackSpeed];
+            _doubleShot = GameData.DoubleShot == 1;
         }
     }
 }

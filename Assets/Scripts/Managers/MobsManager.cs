@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using UnityEngine;
 using Assets.Scripts.Factory;
 using Assets.Scripts.LevelDesign;
@@ -11,17 +12,23 @@ namespace Assets.Scripts.Managers
     {
         private GameManager _gameManager;
         [SerializeField] private EnemyFactory enemyFactory = default;
-        [SerializeField] private LevelEnemies levelEnemies;
+        [SerializeField] private LevelEnemies[] levelEnemies;
         //[SerializeField, Range(0.1f, 10f)] private float spawnSpeed = 1f;
         private float _spawnProgress;
 
+        public int currentLevel = 0;
         private int _currentWave = 0;
         private int _currentWaveEnemiesCount;
+
+        private Timer _gradeTimer;
         
         private void Awake()
         {
             _gameManager = transform.root.GetComponent<GameManager>();
             enemyFactory.transform = transform;
+            currentLevel = GameData.CurrentLevel;
+
+            _gradeTimer = new Timer(levelEnemies[currentLevel].gradeLevelTime * 1000) {AutoReset = false};
         }
 
         private void Start()
@@ -39,21 +46,35 @@ namespace Assets.Scripts.Managers
             }*/
         }
 
+        public void SetNextLevel()
+        {
+            try
+            {
+               currentLevel++;
+               SpawnWave();
+            }
+            catch (Exception e)
+            {
+                // ignored
+            }
+        }
+        
         private void SpawnWave()
         {
-            var waveEnemies = levelEnemies.waves[_currentWave].enemies;
+            var waveEnemies = levelEnemies[currentLevel].waves[_currentWave].enemies;
             _currentWaveEnemiesCount = waveEnemies.Count;
             for (int i = 0; i < waveEnemies.Count; i++)
             {
                 SpawnEnemy(waveEnemies[i]);
             }
+            _gradeTimer.Start();
         }
 
         public void UpdateEnemiesCounter(int cash)
         {
             _currentWaveEnemiesCount--;
             _gameManager.AddCash(cash);
-            if (_currentWave == levelEnemies.waves.Count - 1 && _currentWaveEnemiesCount == 0)
+            if (_currentWave == levelEnemies[currentLevel].waves.Count - 1 && _currentWaveEnemiesCount == 0)
             {
                 _gameManager.LevelComplete();
                 return;
@@ -95,5 +116,7 @@ namespace Assets.Scripts.Managers
             Enemy enemy = enemyFactory.Get(type); // EnemyFactory.Enemies.Base
             enemy.Spawn(pos);
         }
+
+        public int GetGrade() => _gradeTimer.Enabled ? 1 : 0;
     }
 }

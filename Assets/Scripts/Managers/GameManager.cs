@@ -13,7 +13,6 @@ namespace Assets.Scripts.Managers
         public MobsManager mobsManager;
         public RootMenu rootMenu;
         public static ProjectilesManager ProjectilesManager;
-        public GameData GameData = new GameData();
         public LevelData LevelData = new LevelData();
         public bool isPaused = false;
 
@@ -32,9 +31,12 @@ namespace Assets.Scripts.Managers
         public void LevelComplete()
         {
             // Grade points
-            // 1 point for no get hits or hp > 80%
+            // 1 point for no get hits or hp >= 80%
             // 1 point for time
             // 1 point for level complete
+            LevelData.Grade += 1;
+            LevelData.Grade += mobsManager.GetGrade();
+            LevelData.Grade += Player.GetGrade();
             GameData.CashCollected += LevelData.Cash;
             rootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
         }

@@ -3573,7 +3573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyFactory: {fileID: 11400000, guid: 586d2b342551dde4ab9e277607535947, type: 2}
-  levelEnemies: {fileID: 11400000, guid: 1dce7ea76a42d6f43be16549000d9e7a, type: 2}
+  levelEnemies:
+  - {fileID: 11400000, guid: ccfd0a4d59a03194fa4ce0734eacc909, type: 2}
+  - {fileID: 11400000, guid: 2976c2867468f244ca049cd16be8640c, type: 2}
+  currentLevel: 0
 --- !u!1 &1177602295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5849,8 +5852,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnContinuePressed
+      - m_Target: {fileID: 1511304370}
+        m_MethodName: OnRestartPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

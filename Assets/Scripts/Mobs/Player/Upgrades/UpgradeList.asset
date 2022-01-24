@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d73b42735d8784b986a25787a4d6b9, type: 3}
   m_Name: UpgradeList
   m_EditorClassIdentifier: 
-  List:
-  - {fileID: 11400000, guid: 2c422d6e043a8ee4bab3b2695fc54fe6, type: 2}
-  - {fileID: 11400000, guid: 1f41b9088835c1845ac79704860bc01e, type: 2}
-  - {fileID: 11400000, guid: 1ff3beb0a6843ec4eb0e436eaa83e681, type: 2}
-  - {fileID: 11400000, guid: 6d808e9057b5ed249a944878be47ba49, type: 2}
-  - {fileID: 11400000, guid: 593cafe82c69ed2498306af0641b0c34, type: 2}
+  list: []
+  attackPower: {fileID: 11400000, guid: 2c422d6e043a8ee4bab3b2695fc54fe6, type: 2}
+  attackSpeed: {fileID: 11400000, guid: 1f41b9088835c1845ac79704860bc01e, type: 2}
+  moveSpeed: {fileID: 11400000, guid: 1ff3beb0a6843ec4eb0e436eaa83e681, type: 2}
+  health: {fileID: 11400000, guid: 6d808e9057b5ed249a944878be47ba49, type: 2}
+  doubleShot: {fileID: 11400000, guid: 593cafe82c69ed2498306af0641b0c34, type: 2}
