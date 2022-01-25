@@ -38,6 +38,14 @@ namespace Assets.Scripts.Managers
 
         private void Update()
         {
+            /*if (Input.GetButtonDown("Jump"))
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    var e = transform.GetChild(i).GetComponent<Enemy>();
+                    e.GetHit(200);
+                }
+            }*/
             /*_spawnProgress += spawnSpeed * Time.deltaTime;
             if (_spawnProgress >= 1f)
             {
@@ -76,7 +84,7 @@ namespace Assets.Scripts.Managers
             _gameManager.AddCash(cash);
             if (_currentWave == levelEnemies[currentLevel].waves.Count - 1 && _currentWaveEnemiesCount == 0)
             {
-                _gameManager.LevelComplete();
+                _gameManager.WaitLevelComplete();
                 return;
             }
             if (_currentWaveEnemiesCount == 0)

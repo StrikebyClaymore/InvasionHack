@@ -12,9 +12,11 @@ namespace Assets.Scripts.Managers
         public static Player Player;
         public MobsManager mobsManager;
         public RootMenu rootMenu;
+        [SerializeField] private GameObject playerControls;
         public static ProjectilesManager ProjectilesManager;
         public LevelData LevelData = new LevelData();
         public bool isPaused = false;
+        private const float LevelCompleteWaitTime = 3f;
 
         private void Awake()
         {
@@ -23,9 +25,19 @@ namespace Assets.Scripts.Managers
             Player = transform.Find("Player").GetComponent<Player>();
         }
 
+        private void Start()
+        {
+            Time.timeScale = 1f;
+        }
+
         public void AddCash(int cash)
         {
             LevelData.Cash += cash * 10;
+        }
+
+        public void WaitLevelComplete()
+        {
+            Invoke(nameof(LevelComplete), LevelCompleteWaitTime);
         }
         
         public void LevelComplete()
@@ -39,22 +51,25 @@ namespace Assets.Scripts.Managers
             LevelData.Grade += Player.GetGrade();
             GameData.CashCollected += LevelData.Cash;
             rootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
+            LevelData.Grade = 0;
+            LevelData.Cash = 0;
+            ClearScene();
         }
 
+        private void ClearScene()
+        {
+            for (var i = 0; i < ProjectilesManager.transform.childCount; i++)
+            {
+                Destroy(ProjectilesManager.transform.GetChild(i));
+            }
+        }
+        
         public void SetPause()
         {
-            if (isPaused)
-            {
-                Time.timeScale = 1f;
-                isPaused = false;
-                Player.GetComponent<PlayerControl>().LockInput();
-            }
-            else
-            {
-                Time.timeScale = 0;
-                isPaused = true;
-                Player.GetComponent<PlayerControl>().LockInput();
-            }
+            isPaused = !isPaused;
+            Time.timeScale = isPaused ? 0f : 1f;
+            Player.GetComponent<PlayerControl>().LockInput();
+            playerControls.SetActive(!isPaused);
         }
         
     }

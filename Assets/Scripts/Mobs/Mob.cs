@@ -7,6 +7,7 @@ namespace Assets.Scripts.Mobs
 
         [SerializeField] protected int maxHp = 100;
         [SerializeField] protected int currentHp;
+        //protected bool Life = true;
 
         protected virtual void Awake()
         {
@@ -23,6 +24,7 @@ namespace Assets.Scripts.Mobs
 
         public virtual void Die()
         {
+            //Life = false;
             Destroy(gameObject);
         }
     }

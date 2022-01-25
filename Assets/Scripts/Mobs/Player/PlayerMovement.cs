@@ -18,7 +18,7 @@ namespace Assets.Scripts.Mobs.Player
         public Vector3 Direction { get => _direction;  set => _direction = value; }
         private Vector3 _velocity;
         [SerializeField]
-        private float rotationSpeed = 360f;
+        //private float rotationSpeed = 360f;
         //[SerializeField] private LayerMask movementCollideLayer;
         private readonly float _moveHeight = 0.083f; 
 

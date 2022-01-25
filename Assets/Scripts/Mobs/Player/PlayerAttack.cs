@@ -62,7 +62,7 @@ namespace Assets.Scripts.Mobs.Player
         public void ApplyUpgrades(UpgradeList upgradeList)
         {
             _attackPower = (int) upgradeList.attackPower.scale[GameData.AttackPower];
-            _attackCooldownTimer.Interval = attackCooldownTime - upgradeList.attackSpeed.scale[GameData.AttackSpeed];
+            _attackCooldownTimer.Interval = (attackCooldownTime - upgradeList.attackSpeed.scale[GameData.AttackSpeed]) * 1000f;
             _doubleShot = GameData.DoubleShot == 1;
         }
     }
