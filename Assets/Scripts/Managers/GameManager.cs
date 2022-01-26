@@ -60,7 +60,7 @@ namespace Assets.Scripts.Managers
         {
             for (var i = 0; i < ProjectilesManager.transform.childCount; i++)
             {
-                Destroy(ProjectilesManager.transform.GetChild(i));
+                Destroy(ProjectilesManager.transform.GetChild(i).gameObject);
             }
         }
         
