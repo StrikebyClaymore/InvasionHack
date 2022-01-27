@@ -1,6 +1,8 @@
-﻿using Assets.Scripts.Managers;
+﻿using System;
+using Assets.Scripts.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.GUI
 {
@@ -9,6 +11,19 @@ namespace Assets.Scripts.GUI
         [SerializeField] private GameObject main;
         [SerializeField] private GameObject levels;
 
+        private void Awake()
+        {
+            OpenLevels();
+        }
+
+        private void OpenLevels()
+        {
+            foreach (var i in GameData.LevelsCompleted)
+            {
+                levels.transform.GetChild(i).GetComponent<Button>().interactable = true;
+            }
+        }
+        
         public void OnStartPressed()
         {
             main.SetActive(false);

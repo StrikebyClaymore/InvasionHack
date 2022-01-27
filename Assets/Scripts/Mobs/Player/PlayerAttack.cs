@@ -1,4 +1,5 @@
-﻿using System.Timers;
+﻿using System;
+using System.Timers;
 using Assets.Scripts.Factory;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Mobs.Player.Upgrades;
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Mobs.Player
         private bool _isAttackCooldown;
         private int _attackPower;
 
+        [SerializeField] private Transform[] doubleShotAim;
         private bool _doubleShot;
         
         private void Awake()
@@ -42,9 +44,16 @@ namespace Assets.Scripts.Mobs.Player
         {
             if(!_isFireOn || _isAttackCooldown)
                 return;
-            projectileData.damage += _attackPower;
-            GameManager.ProjectilesManager.SpawnProjectile(aim.position, transform.rotation, projectileData);
             _isAttackCooldown = true;
+            if (!_doubleShot)
+            {
+                GameManager.ProjectilesManager.SpawnProjectile(aim.position, transform.rotation, projectileData);
+            }
+            else
+            {
+                GameManager.ProjectilesManager.SpawnProjectile(doubleShotAim[0].position, transform.rotation, projectileData);
+                GameManager.ProjectilesManager.SpawnProjectile(doubleShotAim[1].position, transform.rotation, projectileData);
+            }
             _attackCooldownTimer.Start();
         }
 
@@ -55,7 +64,7 @@ namespace Assets.Scripts.Mobs.Player
 
         private void SetAttackCooldownTimer()
         {
-            _attackCooldownTimer = new Timer(attackCooldownTime * 1000f);
+            _attackCooldownTimer = new Timer(attackCooldownTime * 1000f) {AutoReset = false};
             _attackCooldownTimer.Elapsed += OnAttackCooldownTimeOut;
         }
 
@@ -64,6 +73,7 @@ namespace Assets.Scripts.Mobs.Player
             _attackPower = (int) upgradeList.attackPower.scale[GameData.AttackPower];
             _attackCooldownTimer.Interval = (attackCooldownTime - upgradeList.attackSpeed.scale[GameData.AttackSpeed]) * 1000f;
             _doubleShot = GameData.DoubleShot == 1;
+            projectileData.attackPower = _attackPower;
         }
     }
 }

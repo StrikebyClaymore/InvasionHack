@@ -21,7 +21,7 @@ namespace Assets.Scripts.GUI
 
         //public enum Actions { None, Joystick, Button }
         //private Dictionary<Actions, int> touches = new Dictionary<Actions, int> { };
-        //private const int TouchesMax = 2;
+        private const int MaxTouchesIndex = 1;
 
         private class TouchData
         {
@@ -58,6 +58,8 @@ namespace Assets.Scripts.GUI
             foreach (var ev in Input.touches)
             {
                 var touch = touches[ev.fingerId];
+                if(touch.index > MaxTouchesIndex)
+                    break;
                 if (ev.phase == TouchPhase.Began)
                     TouchDown(touch, ev);
                 else if (ev.phase == TouchPhase.Ended)

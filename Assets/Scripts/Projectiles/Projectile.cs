@@ -37,7 +37,7 @@ namespace Assets.Scripts.Projectiles
 		public void Spawn(Vector3 pos, Quaternion rot, ProjectileData data)
 		{
 			AddIgnoreCollisionTags(data.ignoreCollisionTags);
-			damage = data.damage;
+			damage = data.baseDamage + data.attackPower;
 			moveSpeed = data.moveSpeed;
 			transform.position = pos;
 			transform.rotation = rot;

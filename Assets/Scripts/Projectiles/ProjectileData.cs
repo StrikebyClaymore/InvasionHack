@@ -7,7 +7,8 @@ namespace Assets.Scripts.Projectiles
     public class ProjectileData: ScriptableObject
     {
         public GameObject prefab;
-        public int damage;
+        public int attackPower;
+        public int baseDamage;
         public float moveSpeed;
         public string[] ignoreCollisionTags;
         public ProjectileFactory.Projectiles type;

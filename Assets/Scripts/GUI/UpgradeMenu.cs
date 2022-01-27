@@ -16,10 +16,18 @@ namespace Assets.Scripts.GUI
         private void Start()
         {
             var list = new[] {upgradeList.attackPower, upgradeList.attackSpeed, upgradeList.moveSpeed, upgradeList.health, upgradeList.doubleShot};
+            var data = new[] {GameData.AttackPower, GameData.AttackSpeed, GameData.MoveSpeed, GameData.Health, GameData.DoubleShot};
             for (int i = 0; i < list.Length; i++)
             {
                 var upgrade = list[i];
-                UpdateCost(i, upgrade.cost[0]);
+                if (data[i] >= upgrade.cost.Length)
+                    UpdateCost(i, 0, true);
+                else
+                    UpdateCost(i, upgrade.cost[data[i]]);
+                for (var j = data[i]; j > 0; j--)
+                {
+                    UpdateGrade(i, j);
+                }
             }
         }
 

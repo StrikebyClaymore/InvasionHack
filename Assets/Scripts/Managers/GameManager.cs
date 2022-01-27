@@ -51,9 +51,8 @@ namespace Assets.Scripts.Managers
             LevelData.Grade += Player.GetGrade();
             GameData.CashCollected += LevelData.Cash;
             rootMenu.OpenMenu(RootMenu.MenuType.EndLevel);
-            LevelData.Grade = 0;
-            LevelData.Cash = 0;
             ClearScene();
+            GameData.LevelsCompleted.Add(Mathf.Min(mobsManager.maxLevel, mobsManager.currentLevel + 1));
         }
 
         private void ClearScene()

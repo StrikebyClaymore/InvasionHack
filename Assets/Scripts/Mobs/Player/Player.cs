@@ -9,16 +9,19 @@ namespace Assets.Scripts.Mobs.Player
 		private PlayerMovement _playerMovement;
 		private PlayerAttack _playerAttack;
 
+		private int _baseMaxHp;
+
 		protected override void Awake()
 		{
 			base.Awake();
 			_playerMovement = GetComponent<PlayerMovement>();
 			_playerAttack = GetComponent<PlayerAttack>();
+			_baseMaxHp = maxHp;
 		}
 
 		public void ApplyUpgrades(UpgradeList upgradeList)
 		{
-			maxHp = (int) upgradeList.health.scale[GameData.Health];
+			maxHp = _baseMaxHp + (int) upgradeList.health.scale[GameData.Health];
 			
 			_playerMovement.ApplyUpgrades(upgradeList);
 			_playerAttack.ApplyUpgrades(upgradeList);

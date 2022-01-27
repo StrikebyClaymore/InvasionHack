@@ -16,6 +16,7 @@ namespace Assets.Scripts.Managers
         //[SerializeField, Range(0.1f, 10f)] private float spawnSpeed = 1f;
         private float _spawnProgress;
 
+        public int maxLevel;
         public int currentLevel = 0;
         private int _currentWave = 0;
         private int _currentWaveEnemiesCount;
@@ -27,6 +28,7 @@ namespace Assets.Scripts.Managers
             _gameManager = transform.root.GetComponent<GameManager>();
             enemyFactory.transform = transform;
             currentLevel = GameData.CurrentLevel;
+            maxLevel = levelEnemies.Length - 1;
 
             _gradeTimer = new Timer(levelEnemies[currentLevel].gradeLevelTime * 1000) {AutoReset = false};
         }
@@ -38,14 +40,14 @@ namespace Assets.Scripts.Managers
 
         private void Update()
         {
-            /*if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     var e = transform.GetChild(i).GetComponent<Enemy>();
                     e.GetHit(200);
                 }
-            }*/
+            }
             /*_spawnProgress += spawnSpeed * Time.deltaTime;
             if (_spawnProgress >= 1f)
             {

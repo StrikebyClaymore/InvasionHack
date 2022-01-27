@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public static class GameData
     {
         public static int CurrentLevel;
+        public static HashSet<int> LevelsCompleted = new HashSet<int>{0};
         
         public static int CashCollected;
 

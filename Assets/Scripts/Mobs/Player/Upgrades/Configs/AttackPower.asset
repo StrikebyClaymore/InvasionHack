@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 64000000c800000090010000bc020000e8030000
   scale:
+  - 0
   - 10
   - 20
   - 30

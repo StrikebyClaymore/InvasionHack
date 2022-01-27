@@ -4860,7 +4860,7 @@ MonoBehaviour:
   playerMovement: {fileID: 148330805}
   playerAttack: {fileID: 1084647341}
   cam: {fileID: 963194227}
-  playerController: {fileID: 1024695541}
+  playerController: {fileID: 1024695544}
   nitroButton: {fileID: 222778366}
   attackButton: {fileID: 1951409071}
 --- !u!222 &1441973244

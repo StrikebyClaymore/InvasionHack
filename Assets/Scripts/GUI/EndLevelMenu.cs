@@ -12,6 +12,8 @@ namespace Assets.Scripts.GUI
         public void OnNextPressed()
         {
             Close();
+            root.gameManager.LevelData.Grade = 0;
+            root.gameManager.LevelData.Cash = 0;
             root.gameManager.mobsManager.SetNextLevel();
         }
 
