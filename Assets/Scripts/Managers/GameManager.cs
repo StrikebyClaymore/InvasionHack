@@ -23,6 +23,8 @@ namespace Assets.Scripts.Managers
             mobsManager = transform.Find("Mobs").GetComponent<MobsManager>();
             ProjectilesManager = transform.Find("Projectiles").GetComponent<ProjectilesManager>();
             Player = transform.Find("Player").GetComponent<Player>();
+            
+            Player.ApplyUpgrades(rootMenu.upgradeMenu.upgradeList);
         }
 
         private void Start()
@@ -70,6 +72,10 @@ namespace Assets.Scripts.Managers
             Player.GetComponent<PlayerControl>().LockInput();
             playerControls.SetActive(!isPaused);
         }
-        
+
+        private void OnApplicationQuit()
+        {
+            SaveManager.SaveGame();
+        }
     }
 }

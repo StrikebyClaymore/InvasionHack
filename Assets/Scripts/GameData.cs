@@ -15,5 +15,7 @@ namespace Assets.Scripts
         public static int MoveSpeed = 0;
         public static int Health = 0;
         public static int DoubleShot = 0;
+
+        public static bool Loaded = false;
     }
 }

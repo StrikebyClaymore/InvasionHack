@@ -8,7 +8,7 @@ namespace Assets.Scripts.GUI
 {
     public class UpgradeMenu : BaseMenu
     {
-        [SerializeField] private UpgradeList upgradeList;
+        public UpgradeList upgradeList;
         [SerializeField] private GameObject upgradesBox;
         [SerializeField] private Text cashText;
         [SerializeField] private Color upgradeColor;

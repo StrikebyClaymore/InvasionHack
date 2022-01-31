@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\MobsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ProjectilesManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\SaveManager.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\Enemy.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\Mobs\Enemies\EnemyMovement.cs" />

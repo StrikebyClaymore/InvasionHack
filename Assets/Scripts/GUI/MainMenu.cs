@@ -13,6 +13,8 @@ namespace Assets.Scripts.GUI
 
         private void Awake()
         {
+            if(!GameData.Loaded)
+                SaveManager.LoadGame();
             OpenLevels();
         }
 
@@ -41,6 +43,10 @@ namespace Assets.Scripts.GUI
             main.SetActive(true);
             levels.SetActive(false);
         }
-        
+
+        private void OnApplicationQuit()
+        {
+            SaveManager.SaveGame();
+        }
     }
 }

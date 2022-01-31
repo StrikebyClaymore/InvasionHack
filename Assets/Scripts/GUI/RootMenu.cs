@@ -12,7 +12,7 @@ namespace Assets.Scripts.GUI
         [Header("Menus")]
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private EndLevelMenu endLevelMenu;
-        [SerializeField] private UpgradeMenu upgradeMenu;
+        public UpgradeMenu upgradeMenu;
         public enum MenuType
         {
             Pause,
