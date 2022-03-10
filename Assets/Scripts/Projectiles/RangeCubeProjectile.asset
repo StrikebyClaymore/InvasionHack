@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RangeCubeProjectile
   m_EditorClassIdentifier: 
   prefab: {fileID: 8586704224539753592, guid: 84f39480bda4dde4eb90de10daaa5a76, type: 3}
-  damage: 25
+  attackPower: 0
+  baseDamage: 15
   moveSpeed: 10
   ignoreCollisionTags:
   - Enemy

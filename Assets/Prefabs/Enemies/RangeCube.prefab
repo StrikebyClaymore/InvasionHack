@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldownTime: 1
   attackDistance: 6
-  attackDamage: 0
+  attackDamage: 15
   aim: {fileID: 8615752754674396616}
   projectileData: {fileID: 11400000, guid: c8426b4720cb49e4bb5ca8cdc87acc5b, type: 2}
 --- !u!65 &3289818844774949155
